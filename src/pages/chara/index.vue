@@ -1,7 +1,6 @@
 <template>
     <div>
-        <h2>页面</h2>
-        <NuxtPage />
+        00000
     </div>
 </template>
 
