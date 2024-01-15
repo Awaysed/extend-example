@@ -9,12 +9,6 @@
 
 <script setup lang='ts'>
 import { toRef, reactive } from "vue";
-const props = withDefaults(defineProps<
-  {
-    num: number
-  }
->(), {
-})
 const original = reactive({
   num: 1
 })
