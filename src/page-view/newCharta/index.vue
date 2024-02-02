@@ -1,12 +1,12 @@
 <template>
   <div>
     <div class="header">
-            <div v-for="item in nav" :key="item.name" :class="{ 'current': tab == item.link }">
-              <button @click="tab = item.link">{{ item.name }}</button>
-            </div>
-          </div>
-          <div class="content">
-            <component :is="tab"> </component>
+      <div v-for="item in nav" :key="item.name" :class="{ 'current': tab == item.link }">
+        <button @click="tab = item.link">{{ item.name }}</button>
+      </div>
+    </div>
+    <div class="content">
+      <component :is="tab"> </component>
     </div>
   </div>
 </template>

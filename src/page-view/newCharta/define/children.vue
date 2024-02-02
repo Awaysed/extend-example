@@ -8,7 +8,7 @@
 import { toRef, reactive } from "vue";
 defineProps<{
   id: T,
-  modelValue:number
+  modelValue: number
 }>()
 // const emit = defineEmits<{
 //   (e: 'change', id: number): void
@@ -19,7 +19,7 @@ const emit = defineEmits<{
   update: [value: string]
 }>()
 
-const model= defineModel()
+const model = defineModel()
 await callOnce(async () => {
   console.log('This will only be logged once')
 })
