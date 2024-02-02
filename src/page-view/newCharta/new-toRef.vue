@@ -21,6 +21,12 @@ const original = reactive({
 const toRfeNum = toRef(original, 'num')
 const getterNum = toRef(() => original.num)
 const num1 = original.num
+
+const count = ref({
+  name:'哈哈哈哈'
+})
+
+
 </script>
 
 <style lang='less' scoped>

@@ -1,4 +1,11 @@
+
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": "./.nuxt/tsconfig.json"
+  // https://v3.nuxtjs.org/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+      "verbatimModuleSyntax": false,
+      "moduleResolution": "bundler",
+      "types": ["goal-design", "unplugin-vue-define-options/macros-global"],
+      "strictNullChecks": false
+  }
 }
