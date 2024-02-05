@@ -16,6 +16,7 @@ import newToRef from "./new-toRef.vue";
 import define from "./define/index.vue";
 import cssTest from "./css-test/index.vue";
 import graggable from "./graggable/index.vue";
+import LaTeX from "./LaTeX/index.vue";
 const nav = [
   {
     name: 'ToRef更好的支持getter',
@@ -33,8 +34,12 @@ const nav = [
     name: '拖拽',
     link: graggable
   },
+  {
+    name: '公式',
+    link: LaTeX
+  },
 ]
-const tab = ref<any>(graggable)
+const tab = ref<any>(LaTeX)
 </script>
 
 <style lang='less' scoped>
