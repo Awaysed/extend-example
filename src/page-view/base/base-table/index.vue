@@ -1,0 +1,67 @@
+<template>
+    <div>
+        <h2>表格1</h2>
+        <Htable :tableConfig="tableConfig" :tableData="tableData"></Htable>
+    </div>
+</template>
+
+<script setup lang='ts'>
+import { ref } from 'vue'
+import Htable from "./Htable/index.vue";
+
+const value1 = ref(0)
+const tableConfig = [
+    {
+        title: "标题",
+        field: "tit",//__index和__checkbox 保留field 用于序号和选择框
+        align: "left",
+        width: 200,
+        needTitle: true,
+        // setColor: true,
+        // format: 1,
+    },
+    {
+        title: "姓名",
+        field: "name",//__index和__checkbox 保留field 用于序号和选择框
+        align: "left",
+        width: 200,
+        needTitle: true,
+        // setColor: true,
+        // format: 1,
+    },
+    {
+        title: "身高",
+        field: "height",//__index和__checkbox 保留field 用于序号和选择框
+        align: "left",
+        width: 200,
+        needTitle: true,
+        setColor: true,
+        format: 1,
+    },
+]
+const tableData = [
+    {
+        tit: '撒旦发生',
+        name: '撒打发',
+        height: 12
+    },
+    {
+        tit: '撒旦发qw生',
+        name: '撒打发',
+        height: 123
+    },
+    {
+        tit: '撒旦发qwe生',
+        name: '撒打发',
+        height: 123
+    },
+    {
+        tit: '撒旦发qw生',
+        name: '撒打发',
+        height: 31
+    }
+]
+</script>
+
+<style lang='sass' scoped>
+</style>

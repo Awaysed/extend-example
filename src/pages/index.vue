@@ -2,19 +2,18 @@
     <div>
 
         <div class="container">
-            <newCharta/>
-            <!-- <h2>新特性</h2>
-            <button @click="num++">修改父组件数量++{{ num }}</button>
-            <newToRef :num="num"></newToRef> -->
+            <Base>
+            </Base>
         </div>
-        <div>
-        </div>
+    </div>
+    <div>
     </div>
 </template>
 
 <script setup lang='ts'>
 import { ref } from "vue";
-import newCharta from "./../page-view/newCharta/index.vue";
+// import newCharta from "./../page-view/newCharta/index.vue";
+import Base from "./../page-view/base/index.vue";
 const num = ref(1)
 </script>
 
