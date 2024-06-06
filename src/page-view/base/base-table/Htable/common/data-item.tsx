@@ -19,15 +19,15 @@ export default defineComponent({
     },
     render() {
         let { setColor = false, needTitle = false } = this.formatData
-        let res = formatDataLayout(this.val, this.formatData)
-        let _color = ''
+        let res = formatDataLayout(this.val, this.formatData) // 对数据进行格式化处理
+        let _color = {}
         if (setColor) {
             let _num = parseFloat(res)
             _num = isNaN(_num) ? 0 : _num
-            _color = _num ? (_num > 0 ? 'color-text-rise' : 'color-text-fall') : ''
-        }
+            _color = _num ? (_num > 0 ? {color:'red'} : {color:'#999999'}) : ''
+        } // 条件判断可以加
         return (
-            <div class={_color} title={needTitle ? res : ''}>
+            <div style={_color} title={needTitle ? res : ''}>
                 {res}
             </div>
         )

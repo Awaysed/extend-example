@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>表格1</h2>
+        <h2 style="color: red;" :style="{ color: red }">表格1</h2>
         <Htable :tableConfig="tableConfig" :tableData="tableData"></Htable>
     </div>
 </template>
@@ -13,27 +13,22 @@ const value1 = ref(0)
 const tableConfig = [
     {
         title: "标题",
-        field: "tit",//__index和__checkbox 保留field 用于序号和选择框
+        field: "tit",
         align: "left",
         width: 200,
         needTitle: true,
-        // setColor: true,
-        // format: 1,
     },
     {
         title: "姓名",
-        field: "name",//__index和__checkbox 保留field 用于序号和选择框
+        field: "name",
         align: "left",
         width: 200,
         needTitle: true,
-        // setColor: true,
-        // format: 1,
     },
     {
         title: "身高",
-        field: "height",//__index和__checkbox 保留field 用于序号和选择框
+        field: "height",
         align: "left",
-        width: 200,
         needTitle: true,
         setColor: true,
         format: 1,
@@ -63,5 +58,4 @@ const tableData = [
 ]
 </script>
 
-<style lang='sass' scoped>
-</style>
+<style lang='less' scoped></style>

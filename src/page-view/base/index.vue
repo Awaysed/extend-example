@@ -18,7 +18,6 @@ const nav = [
         name: '表格二次封装',
         link: BaseTable
     },
-
 ]
 const tab = ref<any>(BaseTable)
 </script>

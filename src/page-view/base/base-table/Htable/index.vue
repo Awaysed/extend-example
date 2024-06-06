@@ -12,7 +12,6 @@
 </template>
 
 <script lang="ts" setup>
-// import { TableConfigItem } from './type'
 import DataItem from './common/data-item.tsx'
 import { FormatData } from './common/data-item.tsx'
 
@@ -46,10 +45,9 @@ const props = defineProps<{
     tableData: any[]
 }>()
 
-let computedTableConfig = computed<ComputedTableConfigItemTypes[]>(() => {
-    let res = []
-    props.tableConfig.forEach((item) => {
-        let _item: ComputedTableConfigItemTypes = {
+const computedTableConfig = computed<ComputedTableConfigItemTypes[]>(() => {
+    return props.tableConfig.map((item) => {
+        const _item: ComputedTableConfigItemTypes = {
             field: item.field,
             columnDynamicSlotName: 'column_' + item.field,
             dataFormat: {},
@@ -72,8 +70,7 @@ let computedTableConfig = computed<ComputedTableConfigItemTypes[]>(() => {
                 _item.dataFormat[key] = item[key]
             }
         }
-        res.push(_item)
+        return _item
     })
-    return res
 })
 </script>
