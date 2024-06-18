@@ -6,20 +6,30 @@
             </div>
         </div>
         <div class="content">
-            <component :is="tab"> </component>
+            <component :is="tabComp"> </component>
         </div>
     </div>
 </template>
 
 <script setup lang='ts'>
 import BaseTable from "./base-table/index.vue";
+import baseCalendar from "./base-calendar/index.vue";
 const nav = [
     {
         name: '表格二次封装',
-        link: BaseTable
+        link: 'BaseTable'
+    },
+    {
+        name: '日历组件',
+        link: 'baseCalendar'
     },
 ]
-const tab = ref<any>(BaseTable)
+const TapMap = new Map([
+    ['BaseTable', BaseTable],
+    ['baseCalendar', baseCalendar],
+])
+const tab = ref('baseCalendar')
+const tabComp = computed(() => TapMap.get(tab.value))
 </script>
 
 <style lang='less' scoped>
@@ -36,6 +46,6 @@ const tab = ref<any>(BaseTable)
 
 .current {
     border: 1px solid #bfc;
-    background-color: black;
+    background-color: aquamarine;
 }
 </style>
