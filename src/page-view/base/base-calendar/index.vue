@@ -2,6 +2,7 @@
     <div class="week-calendar">
         <div class="calendar-header">
             <span class="date-tip">{{ getMonthInterval }}</span>
+            <span class="date-now" @click="backNow">今</span>
             <button class="weep-up" @click="prevWeek">
                 < </button>
                     <button class="weep-down" @click="nextWeek"> > </button>
@@ -13,12 +14,11 @@
             <div class="calendar-dates">
                 <div class="calendar-date" v-for="date in weekDates" :key="date.toISOString()"
                     :class="{ 'is-today': isToday(date), 'is-selected': isSelected(date) }" @click="selectDate(date)">
-                    {{ date.getDate() }}
+                    <span>{{ date.getDate() }}</span>
                 </div>
             </div>
         </div>
-        <button @click="log">log</button>
-        {{ weekDates }}
+       
     </div>
 </template>
 
@@ -31,11 +31,9 @@ const weekDates = ref([]);
 const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
 const getWeekDates = (date) => {
     const startOfWeek = date.getDate() - date.getDay();
-    console.log('hanlele-1111', date.getDate(), date.getDay())
     const dates = [];
     for (let i = 0; i < 7; i++) {
         dates.push(new Date(date.getFullYear(), date.getMonth(), startOfWeek + i));
-        console.log('hanlele-22222', new Date(date.getFullYear(), date.getMonth(), startOfWeek + i))
     }
     return dates;
 };
@@ -63,7 +61,10 @@ const nextWeek = () => {
     const startOfNextWeek = new Date(weekDates.value[6].getFullYear(), weekDates.value[6].getMonth(), weekDates.value[6].getDate() + 1);
     weekDates.value = getWeekDates(startOfNextWeek);
 };
-
+const backNow = ()=>{
+    weekDates.value = getWeekDates(today)
+    const selectedDate = ref(today);
+}
 const formatDate = (date, formatType) => {
     if (formatType === 'year-month') {
         return `${date.getFullYear()}年${date.getMonth() + 1}月`;
@@ -75,16 +76,13 @@ const getMonthInterval = computed(() => {
     const start = weekDates.value[0]
     const end = weekDates.value[weekDates.value.length - 1]
     let monthInterval;
+    monthInterval = `${start.getFullYear()}年${start.getMonth() + 1}月`
     if (start.getMonth() === end.getMonth()) {
-        monthInterval = `${start.getFullYear()}年${start.getMonth() + 1}月`
-    } else {
-        monthInterval += `-${end.getFullYear()}年${end.getMonth() + 1}月`
+        return monthInterval
     }
+    monthInterval += `-${end.getFullYear()}年${end.getMonth() + 1}月`
     return monthInterval
 })
-const log = () => {
-    console.log('hanlele-33333', weekDates.value)
-}
 </script>
 
 <style lang="less">
@@ -113,6 +111,13 @@ const log = () => {
         font-size: 16px;
     }
 
+    .date-now {
+        border-radius: 50%;
+        background-color: #DF2D45;
+        color: #FFF;
+        padding: 5px
+    }
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -125,16 +130,19 @@ const log = () => {
 .calendar-date {
     flex: 1;
     text-align: center;
-    padding: 10px;
+    margin: 10px;
     cursor: pointer;
 }
 
 .calendar-date.is-today {
-    background-color: #f0f0f0;
+    border-radius: 50%;
+    background-color: #DF2D45;
+    color: #FFF;
 }
 
 .calendar-date.is-selected {
-    background-color: #bada55;
+    border-radius: 50%;
+    border: 1px solid #DF2D45;
 }
 
 .calendar-weekday {
